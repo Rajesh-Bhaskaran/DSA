@@ -1,0 +1,68 @@
+package dsa;
+
+public class Stack {
+
+	private Node head;
+	private int size;
+	
+	Stack(){
+       head=null;
+	}
+	
+	// Node class for creating node object 
+	class Node {
+		int value;
+		Node next;
+		
+		Node(int value){
+			this.value=value;
+		}
+	}
+	
+	//pushing(or)adding the node in the stack
+	public void push(int value) {
+		Node n = new Node(value);
+		if(head==null) {
+			head=n;
+			size++;
+		}
+		else {
+			n.next=head;
+			head=n;
+			size++;
+		}
+	}
+	
+	//poping(or)removing the node in the stack
+	public int pop() {
+		Node currentNode=head.next;
+		int value=head.value;
+		head.next=null;
+		head=currentNode;
+		size--;
+		return value;
+	}
+	
+	//function to get the lastly added in stack
+	public int peek() {
+		return head.value;
+	}
+	
+	//function to get size of stack
+	public int getSize() {
+		return size;
+	}
+	
+	//function to display  stack
+	public String toString() {
+		Node currentNode=head;
+		String s="";
+		while(currentNode!=null) {
+			s=s+currentNode.value+" ";
+			currentNode=currentNode.next;
+		}
+		System.out.println(s);
+		return "";
+	}
+
+}
